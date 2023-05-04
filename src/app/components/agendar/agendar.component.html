@@ -1,0 +1,75 @@
+
+
+<p>ESPECIALISTAS</p>
+
+<!-- TABLA -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="apellido">
+      <th mat-header-cell *matHeaderCellDef> Apellido </th>
+      <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="tarifa">
+      <th mat-header-cell *matHeaderCellDef> Tarifa </th>
+      <td mat-cell *matCellDef="let element"> {{element.tarifa}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="especialidad">
+      <th mat-header-cell *matHeaderCellDef> Especialidad </th>
+      <td mat-cell *matCellDef="let element"> {{element.especialidad}} </td>
+    </ng-container>  
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="credencial">
+      <th mat-header-cell *matHeaderCellDef> Credencial </th>
+      <td mat-cell *matCellDef="let element"> {{element.credencial}} </td>
+    </ng-container>
+<!--
+    <ng-container matColumnDef="verPerfil">
+        <th mat-header-cell *matHeaderCellDef>Perfil </th>
+        <td mat-cell *matCellDef="let element"> {{element.verPerfil}} 
+            <button mat-raised-button color="primary" (click)="perfilPsicologo(element.id)">Ver perfil</button>
+        </td>
+    </ng-container>-->
+
+    <ng-container matColumnDef="verPerfil">
+      <th mat-header-cell *matHeaderCellDef>Perfil </th>
+      <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" routerLink="/verperfilpsicologo/{{element.id}}">Ver perfil</button>
+      </td>
+  </ng-container>
+<!--
+    <ng-container matColumnDef="perfil">
+        <th mat-header-cell *matHeaderCellDef>Perfil</th>
+        <td mat-cell *matCellDef="perfil">
+            <button style="cursor:pointer" (click)="perfilPsicologo()">Ver perfil
+            </button>
+        </td>
+    </ng-container>-->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<br>
+<br>
+<button mat-raised-button color="warn" routerLink="/home-paciente">Home</button>

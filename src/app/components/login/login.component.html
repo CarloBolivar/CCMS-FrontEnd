@@ -1,0 +1,51 @@
+
+  <mat-grid-list cols="2">
+
+    <mat-grid-tile>
+        <img src="https://i.ibb.co/gWHLwpk/image-10-removebg-preview.png" alt="Imagen de ejemplo">
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+        <form [formGroup]="myForm">
+
+        <h2>INICIAR SESION</h2>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input formControlName="email" matInput placeholder="example@example.com">
+          </mat-form-field>
+
+          <br>
+          <br>
+
+          <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input formControlName="password" matInput type="password">
+          </mat-form-field>
+
+        <br>
+        <br>
+        
+        <button
+        [disabled]="myForm.invalid"
+         mat-raised-button
+          color="primary"
+          (click)="iniciarSesion()"
+          >Login</button> 
+
+          <br>
+          <br>
+
+        <button 
+        [disabled]="myForm.valid"
+        mat-raised-button
+        color="primary"
+        (click)="registro()">Registrarse</button>
+
+        </form>
+
+
+    </mat-grid-tile>
+
+  </mat-grid-list>

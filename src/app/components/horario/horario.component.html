@@ -1,0 +1,43 @@
+<mat-grid-list cols="3" rowHeight="100vh">
+  <mat-grid-tile colspan="1">
+    <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected" (selectedChange)="actualizar()"></mat-calendar>
+      </mat-card>
+      
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="hora">
+          <th mat-header-cell *matHeaderCellDef> Hora </th>
+          <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="disponible">
+          <th mat-header-cell *matHeaderCellDef> Disponible </th>
+          <td mat-cell *matCellDef="let element"> 
+            <mat-slide-toggle [(ngModel)]="element.disponible" (change)="cambiarEstado(element.id, element.disponible)"> {{estado(element.disponible)}}</mat-slide-toggle>
+            </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </mat-grid-tile>
+
+  
+<br>
+<br>
+<button mat-raised-button color="warn" routerLink="/home-psicologo">Home</button>
+</mat-grid-list>
